@@ -1,0 +1,27 @@
+#makegreen {
+  text-decoration: underline;
+  font-size: 50px;
+}
+
+.top {
+  margin: auto;
+}
+b {
+  display: table;
+  border: 3vmin solid;
+  border-radius: 250%;
+  padding: .5vmin;
+  animation: rotate 50s linear infinite;
+  perspective: 80vmin;
+  border-color: transparent black;
+  transform: rotateX(10deg) rotateY(10deg) rotateZ(50deg);
+}
+
+@keyframes rotate {
+  to {
+    transform: rotateX(360deg) rotateY(360deg) rotateZ(-340deg);
+  }
+}
+body {
+  background-color: red;
+}
