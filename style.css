@@ -1,27 +1,36 @@
-#makegreen {
-  text-decoration: underline;
-  font-size: 50px;
+@keyframes splenda {
+    0% {r: "150";}
+    50% {r: "175";}
+    100% {r: "150";}
 }
 
-.top {
+body {
+  background-color: DarkSlateGray;
+}
+
+.container {
+  position: relative;
+  width: 90%;
+  height: 90%;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 2%;
+  /* background-color: white; */
+  text-align: center;
   margin: auto;
 }
-b {
-  display: table;
-  border: 3vmin solid;
-  border-radius: 250%;
-  padding: .5vmin;
-  animation: rotate 50s linear infinite;
-  perspective: 80vmin;
-  border-color: transparent black;
-  transform: rotateX(10deg) rotateY(10deg) rotateZ(50deg);
+
+.nav-item {
+  display: inline;
+  font-size: 50px;
+  padding: 30px;
 }
 
-@keyframes rotate {
-  to {
-    transform: rotateX(360deg) rotateY(360deg) rotateZ(-340deg);
-  }
+.nav-item a {
+  text-decoration: none;
+  font-family: "fantasy";
 }
-body {
-  background-color: lightblue;
+
+.animation {
+  padding-top: 5%;
 }

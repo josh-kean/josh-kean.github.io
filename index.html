@@ -3,28 +3,39 @@
   <head>
     <meta charset="utf-8">
     <title>joshkean.com</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
-  <body>
-    <ul class="nav justify-content-center">
-  <li class="nav-item">
-    <a class="nav-link active" id="makegreen" href="https://www.linkedin.com/in/josh-kean/">Linkedin</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="makegreen" href="https://github.com/josh-kean">Github</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="makegreen" href="Resume_Josh Kean.pdf">Resume</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="makegreen" href="projects/projects.html">projects</a>
-  </li>
-    </ul>
-  <div style="text-align:center">
-  <script async defer src="https://www.recurse-scout.com/loader.js?t=97923ede9c76c5b35b3a762828e36078"></script>
-  </div>
-  <b class='top'><b><b><b><b><b><b><b><b><b><b></b></b></b></b></b></b></b></b></b></b></b>
+  <body link="DarkGoldenRod">
+      <div class="container">
 
+      <ul class="top-list">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/josh-kean">Github</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="https://www.linkedin.com/in/josh-kean/">LinkedIn</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Resume_Josh Kean.pdf">Resume</a>
+        </li>
+      </ul>
+
+      <div class="animation">
+        <svg width="400" height="400">
+
+          <defs>
+            <radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+              <stop offset="0%" style="stop-color:Indigo;
+              stop-opacity:1" />
+              <stop offset="100%" style="stop-color:DarkOliveGreen;stop-opacity:0" />
+            </radialGradient>
+          </defs>
+
+          <circle class="circAni" cx="200" cy="200" r="150" stroke="" stroke-width"1" fill="url(#grad1)">
+
+          <animate attributeName="r" attributeType="XML" from="150" to="150" begin="0s" dur="15s" values="150; 175; 150" fill="url(#grad1)"  repeatCount="indefinite"/></circ>
+        </svg>
+      </div>
+    </div>
   </body>
 </html>
