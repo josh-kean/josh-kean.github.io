@@ -1,36 +1,410 @@
-@keyframes splenda {
-    0% {r: "150";}
-    50% {r: "175";}
-    100% {r: "150";}
+/* ============================================================
+   Josh Kean — personal site
+   Vanilla CSS, no build step. All design tokens live in :root.
+   ============================================================ */
+
+:root {
+  /* Palette */
+  --paper:      #f7f6f2;  /* off-white background */
+  --paper-2:    #ffffff;  /* cards / raised surfaces */
+  --ink:        #1c2126;  /* primary text / deep slate */
+  --ink-soft:   #4a545e;  /* secondary text */
+  --ink-faint:  #7b858f;  /* meta / eyebrows */
+  --line:       #e3e1d9;  /* hairline borders */
+  --accent:     #2f6f5e;  /* saturated accent — links, dot, focus */
+  --accent-ink: #24594b;  /* accent on hover / active */
+
+  /* Type scale — 1.25 (major third), base 1.0625rem (17px) */
+  --f-xs:   0.79rem;
+  --f-sm:   0.9rem;
+  --f-base: 1.0625rem;
+  --f-md:   1.33rem;
+  --f-lg:   1.66rem;
+  --f-xl:   2.07rem;
+  --f-2xl:  2.59rem;
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+               Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Code", "JetBrains Mono",
+               Menlo, Consolas, monospace;
+
+  /* Spacing */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-5: 3rem;
+  --space-6: 5rem;
+
+  --radius: 10px;
+  --measure: 65ch;
+  --wrap: 760px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper:      #14181c;
+    --paper-2:    #1b2127;
+    --ink:        #eceef0;
+    --ink-soft:   #b3bcc4;
+    --ink-faint:  #808b95;
+    --line:       #2b333b;
+    --accent:     #63c7ab;
+    --accent-ink: #8bd8c1;
+  }
+}
+
+/* ---------- Reset-ish ---------- */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem; /* clear the sticky header when jumping to anchors */
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background-color: DarkSlateGray;
+  margin: 0;
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: var(--f-base);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-.container {
-  position: relative;
-  width: 90%;
-  height: 90%;
-  padding-left: 5%;
-  padding-right: 5%;
-  padding-top: 2%;
-  /* background-color: white; */
-  text-align: center;
-  margin: auto;
+h1, h2, h3, p, ul { margin: 0; }
+ul { list-style: none; padding: 0; }
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+a:hover { color: var(--accent-ink); }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 3px;
 }
 
-.nav-item {
-  display: inline;
-  font-size: 50px;
-  padding: 30px;
+/* ---------- Layout helpers ---------- */
+
+.wrap {
+  width: 100%;
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-inline: var(--space-3);
 }
 
-.nav-item a {
+.section {
+  padding-block: var(--space-6);
+  border-top: 1px solid var(--line);
+}
+
+.visually-hidden,
+.skip-link {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link:focus {
+  position: fixed;
+  top: var(--space-2);
+  left: var(--space-2);
+  width: auto; height: auto;
+  margin: 0;
+  padding: var(--space-1) var(--space-2);
+  clip: auto;
+  background: var(--paper-2);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  z-index: 10;
+}
+
+/* ---------- Signature: monospace section eyebrows ---------- */
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--f-sm);
+  letter-spacing: 0.02em;
+  color: var(--ink-faint);
+  margin-bottom: var(--space-2);
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: saturate(1.4) blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding-block: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.wordmark {
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  color: var(--ink);
   text-decoration: none;
-  font-family: "fantasy";
+  font-size: var(--f-md);
 }
 
-.animation {
-  padding-top: 5%;
+.nav {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+.nav a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-size: var(--f-sm);
+}
+.nav a:hover { color: var(--accent); }
+
+/* ---------- Hero ---------- */
+
+.hero {
+  padding-block: var(--space-6) var(--space-5);
+}
+
+.availability {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6ch;
+  font-size: var(--f-sm);
+  color: var(--ink-soft);
+  padding: 0.35rem 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--paper-2);
+  margin-bottom: var(--space-3);
+}
+
+.dot {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 55%, transparent);
+  animation: pulse 2.4s ease-out infinite;
+}
+
+@keyframes pulse {
+  0%   { box-shadow: 0 0 0 0   color-mix(in srgb, var(--accent) 55%, transparent); }
+  70%  { box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 0%,  transparent); }
+  100% { box-shadow: 0 0 0 0   color-mix(in srgb, var(--accent) 0%,  transparent); }
+}
+
+.hero h1 {
+  font-size: var(--f-2xl);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+  margin-bottom: var(--space-1);
+}
+
+.lede {
+  font-size: var(--f-md);
+  color: var(--ink-soft);
+  margin-bottom: var(--space-3);
+}
+
+.pitch {
+  font-size: var(--f-md);
+  max-width: var(--measure);
+  color: var(--ink);
+  margin-bottom: var(--space-4);
+  text-wrap: pretty;
+}
+
+/* ---------- Buttons ---------- */
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius);
+  font-size: var(--f-sm);
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: var(--accent-ink);
+  color: #fff;
+}
+
+.btn-ghost {
+  color: var(--ink);
+  border-color: var(--line);
+  background: var(--paper-2);
+}
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ---------- Headings in sections ---------- */
+
+.section h2 {
+  font-size: var(--f-xl);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: var(--space-4);
+}
+
+/* ---------- What I do ---------- */
+
+.do-list {
+  display: grid;
+  gap: var(--space-3);
+  max-width: var(--measure);
+}
+.do-list li {
+  padding-left: var(--space-3);
+  border-left: 2px solid var(--line);
+  color: var(--ink-soft);
+}
+.do-list strong {
+  color: var(--ink);
+  font-weight: 650;
+}
+
+/* ---------- Projects ---------- */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-3);
+}
+
+.card {
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.card-title {
+  font-size: var(--f-md);
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+.card-title a {
+  text-decoration: none;
+  color: var(--ink);
+}
+.card-title a:hover { color: var(--accent); }
+
+.card-desc {
+  color: var(--ink-soft);
+  font-size: var(--f-sm);
+  flex: 1;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+.tags li {
+  font-family: var(--font-mono);
+  font-size: var(--f-xs);
+  color: var(--ink-faint);
+  padding: 0.15rem 0.55rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+
+/* ---------- Writing ---------- */
+
+.post-list { display: grid; gap: var(--space-2); max-width: var(--measure); }
+
+.post {
+  display: flex;
+  gap: var(--space-3);
+  padding-block: var(--space-2);
+  border-bottom: 1px solid var(--line);
+  align-items: baseline;
+}
+.post-date {
+  font-family: var(--font-mono);
+  font-size: var(--f-sm);
+  color: var(--ink-faint);
+  flex: 0 0 auto;
+  min-width: 4ch;
+}
+.post-body { display: flex; flex-direction: column; }
+.post-title { font-weight: 650; color: var(--ink); }
+.post-note { color: var(--ink-soft); font-size: var(--f-sm); }
+
+/* ---------- Contact ---------- */
+
+.contact-line {
+  max-width: var(--measure);
+  color: var(--ink-soft);
+  font-size: var(--f-md);
+  margin-bottom: var(--space-3);
+}
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  font-weight: 600;
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding-block: var(--space-4);
+}
+.site-footer p {
+  color: var(--ink-faint);
+  font-size: var(--f-sm);
+}
+.site-footer p + p { margin-top: 0.25rem; }
+
+/* ---------- Motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .dot { animation: none; }
+  .btn { transition: none; }
 }
