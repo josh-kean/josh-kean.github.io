@@ -2,34 +2,151 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>joshkean.com</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Josh Kean — Staff Software Engineer</title>
+    <meta name="description" content="Josh Kean — Staff Software Engineer in Nashville, TN. I build and untangle backend systems: data migrations, pipelines, and integration work. Available for freelance projects.">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Josh Kean — Staff Software Engineer">
+    <meta property="og:description" content="I build and untangle backend systems: data migrations, pipelines, and the integration work nobody else wants to touch. Available for freelance projects.">
+    <meta property="og:url" content="https://www.joshkean.com/">
+
+    <link rel="stylesheet" href="style.css">
   </head>
-  <body link="DarkGoldenRod">
-      <div class="container">
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
 
-      <ul class="top-list">
-        <li class="nav-item">
-          <a class="nav-link" href="https://github.com/josh-kean">Github</a>
-        </li>
-      </ul>
-
-      <div class="animation">
-        <svg width="400" height="400">
-
-          <defs>
-            <radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-              <stop offset="0%" style="stop-color:Indigo;
-              stop-opacity:1" />
-              <stop offset="100%" style="stop-color:DarkOliveGreen;stop-opacity:0" />
-            </radialGradient>
-          </defs>
-
-          <circle class="circAni" cx="200" cy="200" r="150" stroke="" stroke-width"1" fill="url(#grad1)">
-
-          <animate attributeName="r" attributeType="XML" from="150" to="150" begin="0s" dur="15s" values="150; 175; 150" fill="url(#grad1)"  repeatCount="indefinite"/></circ>
-        </svg>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="wordmark" href="#top">Josh Kean</a>
+        <nav aria-label="Primary">
+          <ul class="nav">
+            <!-- Hidden until there's real content to show
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#writing">Writing</a></li>
+            -->
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
       </div>
-    </div>
+    </header>
+
+    <main id="main">
+      <!-- Hero -->
+      <section class="hero wrap" id="top">
+        <p class="availability">
+          <span class="dot" aria-hidden="true"></span>
+          Available for freelance projects
+        </p>
+        <!-- TODO: confirm last name -->
+        <h1>Josh Kean</h1>
+        <p class="lede">Staff Software Engineer&nbsp;· Nashville,&nbsp;TN</p>
+        <!-- TODO: Josh to edit pitch -->
+        <p class="pitch">
+          I build and untangle backend systems — data migrations, pipelines,
+          and the integration work nobody else wants to touch.
+        </p>
+        <p class="cta-row">
+          <a class="btn btn-primary" href="mailto:josh@joshkean.com">Get in touch</a>
+          <!-- Hidden until Projects section is live
+          <a class="btn btn-ghost" href="#projects">See projects</a>
+          -->
+        </p>
+      </section>
+
+      <!-- What I do -->
+      <section class="section wrap" aria-labelledby="do-heading">
+        <p class="eyebrow">/what-i-do</p>
+        <h2 id="do-heading" class="visually-hidden">What I do</h2>
+        <ul class="do-list">
+          <li>
+            <strong>Backend systems &amp; APIs.</strong>
+            Services that stay reliable under load and stay legible to the next engineer.
+          </li>
+          <li>
+            <strong>Data migrations &amp; pipelines.</strong>
+            Moving data between systems — e.g. Oracle&nbsp;→&nbsp;PostgreSQL — without losing rows or sleep.
+          </li>
+          <li>
+            <strong>Integrations.</strong>
+            Getting systems that were never meant to talk to speak the same language.
+          </li>
+        </ul>
+      </section>
+
+      <!-- Projects — hidden until there's real work to show
+      <section class="section wrap" id="projects" aria-labelledby="projects-heading">
+        <p class="eyebrow">/projects</p>
+        <h2 id="projects-heading">Projects</h2>
+        <div class="card-grid">
+          <article class="card">
+            <h3 class="card-title">More on the way</h3>
+            <p class="card-desc">Coming soon — pushing more work to GitHub in 2026.</p>
+            <ul class="tags" aria-label="Tags">
+              <li>Backend</li>
+              <li>Pipelines</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">Selected work</h3>
+            <p class="card-desc">Case studies for migration and integration projects are being written up.</p>
+            <ul class="tags" aria-label="Tags">
+              <li>Migrations</li>
+              <li>Integrations</li>
+            </ul>
+          </article>
+
+          <article class="card card-link-card">
+            <h3 class="card-title">
+              <a href="https://github.com/josh-kean">GitHub&nbsp;→</a>
+            </h3>
+            <p class="card-desc">Code, experiments, and everything published so far.</p>
+            <ul class="tags" aria-label="Tags">
+              <li>@josh-kean</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+      -->
+
+      <!-- Writing — hidden until the first post is live
+      <section class="section wrap" id="writing" aria-labelledby="writing-heading">
+        <p class="eyebrow">/writing</p>
+        <h2 id="writing-heading">Writing</h2>
+        <ul class="post-list">
+          <li class="post">
+            <span class="post-date">2026</span>
+            <span class="post-body">
+              <span class="post-title">First post in the works</span>
+              <span class="post-note">Notes on migrations, integrations, and the boring parts that matter.</span>
+            </span>
+          </li>
+        </ul>
+      </section>
+      -->
+
+      <!-- Contact -->
+      <section class="section wrap" id="contact" aria-labelledby="contact-heading">
+        <p class="eyebrow">/contact</p>
+        <h2 id="contact-heading">Contact</h2>
+        <p class="contact-line">
+          Open to full-time conversations and freelance engagements. The fastest way to reach me is email.
+        </p>
+        <ul class="contact-links">
+          <li><a href="mailto:josh@joshkean.com">josh@joshkean.com</a></li>
+          <li><a href="https://github.com/josh-kean">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/josh-kean/">LinkedIn</a></li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>© 2026 Josh Kean</p>
+        <p>Built with plain HTML &amp; CSS — no JavaScript.</p>
+      </div>
+    </footer>
   </body>
 </html>
